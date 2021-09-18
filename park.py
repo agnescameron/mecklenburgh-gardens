@@ -22,6 +22,14 @@ class Segment:
 		print('segment')
 
 
+def update(day, climate_state):
+	print('updating state of park', day, climate_state.water)
+
+
+def initialise():
+	print('updating state of park')
+
+
 def add_plant():
 	print('adding plant')
 

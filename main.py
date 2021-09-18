@@ -42,6 +42,8 @@ def advance_day(day):
 	#calculate the season
 	#calculate the temperature, pollution, other stats
 	day = day + timedelta(days=7)
+	climate_state = climate.update(day)
+	park.update(day, climate_state)
 	print('day is', day, 'year is', day.year)
 	time.sleep(0.001)
 	return day
