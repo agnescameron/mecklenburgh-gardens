@@ -1,0 +1,22 @@
+{
+	"plane": {
+		"full_name": "",
+		"latin_name": "",
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false,
+		""
+	},
+
+	"cherry": {
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false
+	}
+}
