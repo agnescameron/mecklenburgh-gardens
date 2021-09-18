@@ -1,6 +1,7 @@
 import time
 import os
-import threading
+# import threading
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 
 # submodules
@@ -27,17 +28,6 @@ def init_db():
 	finally:
 		if conn:
 			conn.close()
-
-def threadwrap(threadfunc):
-	def wrapper():
-		while True:
-			try:
-				threadfunc()
-			except BaseException as e:
-				print('{!r}; restarting thread'.format(e))
-			else:
-				print('exited normally, bad thread; restarting')
-	return wrapper
 
 def record_results():
 	#write out the results of the simulation to database
@@ -81,19 +71,7 @@ if __name__ == "__main__":
 	print('starting sim')
 	# init_db()
 
-	main_loop()
-
-	# try:
-	# 	#start server
-	# 	app = threading.Thread(target=threadwrap(server.run))
-	# 	app.daemon=True
-	# 	app.start()
-
-	# 	#?
-	# 	sim = threading.Thread(target=threadwrap(main_loop))
-	# 	sim.daemon=True
-	# 	sim.start()
-
-	# except (KeyboardInterrupt, SystemExit):
-	# 	print('stopping....')
+	executor = ThreadPoolExecutor(max_workers=3)
+	app = executor.submit(server.run)
+	sim = executor.submit(main_loop)
 
