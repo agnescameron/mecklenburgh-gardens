@@ -22,7 +22,8 @@ def init_db():
 		c=conn.cursor()
 		c.execute('''DROP TABLE IF EXISTS park''')
 		c.execute('''CREATE TABLE IF NOT EXISTS park
-			(id INTEGER PRIMARY KEY, 'timestamp' DATETIME DEFAULT CURRENT_TIMESTAMP, temp TEXT, monthnum INT, entityType TEXT)''')
+			(id INTEGER PRIMARY KEY, 'timestamp' DATETIME DEFAULT 
+			CURRENT_TIMESTAMP, temp TEXT, monthnum INT, entityType TEXT)''')
 		print(sqlite3.version)
 	except sqlite3.Error as e:
 		print(e)
@@ -30,13 +31,10 @@ def init_db():
 		if conn:
 			conn.close()
 
-def record_results():
-	#write out the results of the simulation to database
-	print('recording results')
-
 def wrap_up():
 	#resolve simulation after 100 / (?50?) years
 	#does this happen periodically anyway?
+	#write out the results of the simulation to database
 	record_results()
 
 def advance_day(day):
@@ -48,6 +46,7 @@ def advance_day(day):
 	day = day + timedelta(days=7)
 	climate_state.update(day)
 	park_state.update(day, climate_state)
+	print(park_state.get_park())
 	print('day is', day, 'year is', day.year)
 	return day
 
@@ -97,16 +96,3 @@ if __name__ == "__main__":
 	
 	for fut in concurrent.futures.as_completed(futures):
 		print(fut.result())
-
-	# with  as executor:
-	# 	futures = {executor.submit(task): task for task in threads}
-
-		# for fut in concurrent.futures.as_completed(futures):
-		# 	original_task = futures[fut]
-		# 	print(f"The result of {original_task} is {fut.result()}")
-
-		# sim = executor.submit(main_loop)
-		# print(f'{sim.result()}')
-
-		# app = executor.submit(server.run)
-		# print(f'{app.result()}')

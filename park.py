@@ -1,10 +1,13 @@
 import os
 import json
 import csv
+import helpers
 
 dirname = os.path.dirname(__file__)
 
 class Park:
+	events = []
+
 	def __init__(self, plants, animals, segments):
 		print('plant')
 		self.plants = plants
@@ -13,6 +16,7 @@ class Park:
 
 	def update(self, day, climate_state):
 		print('updating state of park')
+		events.append('another day in the park')
 		for plant in self.plants:
 			print(plant.full_name)
 
@@ -21,6 +25,9 @@ class Park:
 
 	def add_plant(self):
 		print('adding plant')
+
+	def get_park(self):
+		return helpers.get_json(self)
 
 
 class Tree:
@@ -42,12 +49,20 @@ class Tree:
 	def die(self):
 		print('tree dying')
 
+	def print(self):
+		return helpers.get_json(self)
+
+
 class Plant:
 	def __init__(self, type, id, temp_mean, temp_std, water_mean, water_std):
 		print('plant')
 
 	def die(self):
 		print('animal dying')
+
+	def print(self):
+		return helpers.get_json(self)
+
 
 class Animal:
 	def __init__(self, type, id, desired_habitat):
@@ -60,10 +75,16 @@ class Animal:
 	def die(self):
 		print('animal dying')
 
+	def print(self):
+		return helpers.get_json(self)
+
 
 class Segment:
 	def __init__(self, state):
 		print('segment')
+
+	def print(self):
+		return helpers.get_json(self)
 
 
 def create_plants():
@@ -79,10 +100,13 @@ def create_plants():
 				plants.append(tree)
 			except:
 				print('tree not in list')
+	print(plants)
+
 	return plants
 
 
 def create_animals():
+	# animal generation
 	animals = ['animal']
 	return animals
 
