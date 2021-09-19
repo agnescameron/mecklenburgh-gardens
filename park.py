@@ -1,4 +1,6 @@
 import os
+import json
+import csv
 
 dirname = os.path.dirname(__file__)
 
@@ -10,7 +12,9 @@ class Park:
 		self.segments = segments
 
 	def update(self, day, climate_state):
-		print('updating state of park', day, climate_state.water)
+		print('updating state of park')
+		for plant in self.plants:
+			print(plant.full_name)
 
 	def outbreak(self):
 		print('adding plant')
@@ -18,6 +22,19 @@ class Park:
 	def add_plant(self):
 		print('adding plant')
 
+
+class Tree:
+	def __init__(self, info, id, x_pos, y_pos, radius, age):
+		print('tree')
+		for key, val in info.items():
+			setattr(self, key, val)
+		self.x_pos = x_pos
+		self.y_pos = y_pos
+		self.radius = radius
+		self.age = age
+
+	def die(self):
+		print('animal dying')
 
 class Plant:
 	def __init__(self, type, id, temp_mean, temp_std, water_mean, water_std):
@@ -44,7 +61,18 @@ class Segment:
 
 
 def create_plants():
-	plants = ['tree', 'tree', 'tree']
+	plants = []
+	plant_info = json.loads(open('./assets/plant_info.json').read())
+
+	with open('./assets/tree_index.csv') as file:
+		reader = csv.reader(file)
+		for row in reader:
+			try:
+				tree_info = plant_info[row[1]]
+				tree = Tree(tree_info, row[0], row[2], row[3], row[4], row[5])
+				plants.append(tree)
+			except:
+				print('tree not in list')
 	return plants
 
 

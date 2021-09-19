@@ -1,6 +1,5 @@
 import time
 import os
-# import threading
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 
@@ -9,14 +8,11 @@ import server
 import park
 import climate
 
-# park_state
-# climate_state
-
 dirname = os.path.dirname(__file__)
 db_file = os.path.join(dirname, 'meck.db')
 start_date = date(2021, 9, 25)
 sim_length = 3
-speed = 10
+speed = 1
 
 def init_db():
 	global db_file
@@ -69,7 +65,6 @@ def initialise():
 
 
 def run_simulation():
-	# climate.perturb_model() # no feedback from garden to climate?
 	day = start_date
 	year = day.year
 	initialise()
@@ -78,21 +73,23 @@ def run_simulation():
 		day = advance_day(day)
 		year = day.year
 		time.sleep(1/speed)
+
 	wrap_up()
 
 def main_loop():
-	simnum = 0
+	sim_num = 0
 	while True:
-		print('initialising simulation', simnum)
+		print('initialising simulation', sim_num)
 		run_simulation()
-		simnum +=1
+		sim_num +=1
 	# keep running 100-year cycles
 
 if __name__ == "__main__":
 	print('starting sim')
 	# init_db()
 
-	executor = ThreadPoolExecutor(max_workers=3)
-	app = executor.submit(server.run)
-	sim = executor.submit(main_loop)
+	# executor = ThreadPoolExecutor(max_workers=3)
+	# app = executor.submit(server.run)
+	# sim = executor.submit(main_loop)
 
+	main_loop()
