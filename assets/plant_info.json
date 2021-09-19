@@ -1,12 +1,12 @@
 {
 	"plane": {
-		"full_name": "",
+		"full_name": "London Plane",
 		"latin_name": "",
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false,
 		"diseases": [
 			{
@@ -32,58 +32,79 @@
 			{
 				"name": "massaria",
 				"causes": "",
-				"symptoms": 
+				"symptoms": ""
 			},
 			{
 				"name": "elbow-patch crust",
 				"causes": "",
-				"symptoms": 
-			},
+				"symptoms": ""
+			}
 		]
 	},
 
 	"cherry": {
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"full_name": "Ornamental Cherry",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false
 	},
 
 	"oak": {
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"full_name": "Pendunculate Oak",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false
 	},
 
 	"fig": {
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"full_name": "Fig",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false
 	},
 
 	"hops": {
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"full_name": "Hops",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
+		"edible": false
+	},
+
+	"unknown": {
+		"full_name": "unknown tree",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false
 	},
 
 	"herbs": {
-		"info": "",
-		"temp_mean": "",
-		"temp_std": "",
-		"water_mean": "",
-		"water_std": "",
+		"full_name": "Herbs",
+		"latin_name": "",
+		"description": "",
+		"temp_mean": 11,
+		"temp_std": 5,
+		"water_mean": 2,
+		"water_std": 0.5,
 		"edible": false
-	},
+	}
 }
