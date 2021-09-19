@@ -33,8 +33,14 @@ class Tree:
 		self.radius = radius
 		self.age = age
 
+	def progress_disease(self):
+		print('tree has disease')
+
+	def age(self):
+		print('tree dying')
+
 	def die(self):
-		print('animal dying')
+		print('tree dying')
 
 class Plant:
 	def __init__(self, type, id, temp_mean, temp_std, water_mean, water_std):

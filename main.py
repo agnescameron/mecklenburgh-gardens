@@ -1,6 +1,6 @@
 import time
 import os
-from concurrent.futures import ThreadPoolExecutor
+import concurrent.futures
 from datetime import date, timedelta
 
 # submodules
@@ -84,12 +84,29 @@ def main_loop():
 		sim_num +=1
 	# keep running 100-year cycles
 
+def run_jobs(executor):
+	app = executor.submit(server.run)
+	sim = executor.submit(main_loop)
+	return app, sim
+
 if __name__ == "__main__":
 	print('starting sim')
 	# init_db()
 
-	# executor = ThreadPoolExecutor(max_workers=3)
-	# app = executor.submit(server.run)
-	# sim = executor.submit(main_loop)
+	futures = run_jobs(concurrent.futures.ThreadPoolExecutor(max_workers = 2))
+	
+	for fut in concurrent.futures.as_completed(futures):
+		print(fut.result())
 
-	main_loop()
+	# with  as executor:
+	# 	futures = {executor.submit(task): task for task in threads}
+
+		# for fut in concurrent.futures.as_completed(futures):
+		# 	original_task = futures[fut]
+		# 	print(f"The result of {original_task} is {fut.result()}")
+
+		# sim = executor.submit(main_loop)
+		# print(f'{sim.result()}')
+
+		# app = executor.submit(server.run)
+		# print(f'{app.result()}')
