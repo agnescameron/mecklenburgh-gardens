@@ -35,7 +35,8 @@ def wrap_up():
 	#resolve simulation after 100 / (?50?) years
 	#does this happen periodically anyway?
 	#write out the results of the simulation to database
-	record_results()
+	print('recording results')
+	# record_results()
 
 def advance_day(day):
 	#calculate the season
@@ -46,6 +47,7 @@ def advance_day(day):
 	day = day + timedelta(days=7)
 	climate_state.update(day)
 	park_state.update(day, climate_state)
+	server.update_park(park_state)
 	print(park_state.get_park())
 	print('day is', day, 'year is', day.year)
 	return day

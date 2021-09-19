@@ -22,7 +22,7 @@ def update_climate(climate_state):
 
 def update_park(park_state):
 	global park
-	park = park_state
+	park = park_state.get_park()
 
 @app.route("/climate", methods=["GET"])
 def get_climate():
@@ -31,7 +31,6 @@ def get_climate():
 
 @app.route("/park", methods=["GET"])
 def get_park():
-	global park
 	return json.dumps(park, indent=4, sort_keys=True)
 
 @app.route("/", methods=["GET"])

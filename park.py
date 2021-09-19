@@ -16,7 +16,7 @@ class Park:
 
 	def update(self, day, climate_state):
 		print('updating state of park')
-		events.append('another day in the park')
+		self.events.append('another day in the park')
 		for plant in self.plants:
 			print(plant.full_name)
 
