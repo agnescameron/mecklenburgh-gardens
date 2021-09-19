@@ -8,7 +8,38 @@
 		"water_mean": "",
 		"water_std": "",
 		"edible": false,
-		""
+		"diseases": [
+			{
+				"name": "canker stain",
+				"causes": "fungus",
+				"symptoms": [
+					"pronounced staining of the xylem",
+					"severe wilting and yellowing",
+					"tree death"
+				],
+				"deadly": 0.8
+			},
+			{
+				"name": "anthracnose",
+				"causes": "fungus",
+				"symptoms": [
+					"Twig and branch dieback.",
+					"Death of young shoots shortly after they flush.",
+					"Brown lesions on leaves, followed by premature leaf loss"
+				],
+				"deadly": 0.2
+			},
+			{
+				"name": "massaria",
+				"causes": "",
+				"symptoms": 
+			},
+			{
+				"name": "elbow-patch crust",
+				"causes": "",
+				"symptoms": 
+			},
+		]
 	},
 
 	"cherry": {
@@ -18,5 +49,41 @@
 		"water_mean": "",
 		"water_std": "",
 		"edible": false
-	}
+	},
+
+	"oak": {
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false
+	},
+
+	"fig": {
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false
+	},
+
+	"hops": {
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false
+	},
+
+	"herbs": {
+		"info": "",
+		"temp_mean": "",
+		"temp_std": "",
+		"water_mean": "",
+		"water_std": "",
+		"edible": false
+	},
 }
