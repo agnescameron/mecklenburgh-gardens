@@ -9,7 +9,6 @@ class Park:
 	events = []
 
 	def __init__(self, plants, animals, segments):
-		print('plant')
 		self.plants = plants
 		self.animals = animals
 		self.segments = segments
@@ -18,7 +17,8 @@ class Park:
 		print('updating state of park')
 		self.events.append('another day in the park')
 		for plant in self.plants:
-			print(plant.full_name)
+			pass
+			# print(plant.full_name)
 
 	def outbreak(self):
 		print('adding plant')
@@ -32,7 +32,7 @@ class Park:
 
 class Tree:
 	def __init__(self, info, id, x_pos, y_pos, radius, age):
-		print('tree')
+		# print('tree')
 		for key, val in info.items():
 			setattr(self, key, val)
 		self.x_pos = x_pos
@@ -90,9 +90,7 @@ class Segment:
 def create_plants():
 	plants = []
 	with open(r'./assets/external_data/tree_info.csv', encoding='utf-8') as file:
-		# print(file)
 		plant_info = helpers.json_from_data(file)
-		print("plant info is", plant_info)
 
 	with open('./assets/garden_index/trees.csv') as file:
 		reader = csv.reader(file)
@@ -103,7 +101,6 @@ def create_plants():
 				plants.append(tree)
 			except:
 				print('tree not in list')
-	print(plants)
 
 	return plants
 

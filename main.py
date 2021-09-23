@@ -1,6 +1,7 @@
 import time
 import os
 import concurrent.futures
+import json
 from datetime import date, timedelta
 
 # submodules
@@ -41,14 +42,13 @@ def wrap_up():
 def advance_day(day):
 	#calculate the season
 	global park_state, climate_state
-	print('advancing day')
+	# print('advancing day')
 
 	#calculate the temperature, pollution, other stats
 	day = day + timedelta(days=7)
 	climate_state.update(day)
 	park_state.update(day, climate_state)
 	server.update_park(park_state)
-	print(park_state.get_park())
 	print('day is', day, 'year is', day.year)
 	return day
 
@@ -78,7 +78,11 @@ def run_simulation():
 	wrap_up()
 
 def main_loop():
+	global projection_data
+
 	sim_num = 0
+	projection_data = climate.initialise_projection_data()
+
 	while True:
 		print('initialising simulation', sim_num)
 		run_simulation()
@@ -96,5 +100,5 @@ if __name__ == "__main__":
 
 	futures = run_jobs(concurrent.futures.ThreadPoolExecutor(max_workers = 2))
 	
-	for fut in concurrent.futures.as_completed(futures):
-		print(fut.result())
+	for job in concurrent.futures.as_completed(futures):
+		print(job.result())
