@@ -89,13 +89,16 @@ class Segment:
 
 def create_plants():
 	plants = []
-	plant_info = json.loads(open('./assets/plant_info.json').read())
+	with open(r'./assets/external_data/tree_info.csv', encoding='utf-8') as file:
+		# print(file)
+		plant_info = helpers.json_from_data(file)
+		print("plant info is", plant_info)
 
-	with open('./assets/tree_index.csv') as file:
+	with open('./assets/garden_index/trees.csv') as file:
 		reader = csv.reader(file)
 		for row in reader:
 			try:
-				tree_info = plant_info[row[1]]
+				tree_info = list(filter(lambda x:x["name"]==row[1], plant_info))[0]
 				tree = Tree(tree_info, row[0], row[2], row[3], row[4], row[5])
 				plants.append(tree)
 			except:

@@ -1,0 +1,11 @@
+id,name,type
+1,west lawn,lawn
+2,playground,lawn
+3,tennis court,paved
+4,north lawn,lawn
+5,east lawn,lawn
+6,south lawn,lawn
+7,path,gravel
+8,shed,paved
+9,substation,paved
+10,border,soil

@@ -1,0 +1,30 @@
+name,full_name,leaf,latin_name,description,family,colour,autumn_colour,flower_colour,flower_season,hardiness,temp_mean,temp_std,water_mean,water_std,edible
+abutilon,Abutilon,deciduous,Abutilon,A large flowering tree in the mallow family.,Mallow,#3b8a42,,,,8,18,6,50,3,FALSE
+acer,Japanese Maple,deciduous,Acer palmatum,"A small, delicate, slow-growing tree that likes shade.",Acer,#e6973e,,#a12a22,,H6,12,5,48,2,FALSE
+almond,Almond,deciduous,Prunus dulcis,"An upright, spreading, deciduous tree with lance-shaped, toothed dark green leaves. Blossom is pink or white, scented, and produced on bare stems in early spring, followed by oval-shaped green fruit encasing edible almond nuts.",Rosaceae,#4ecf5a,,#fbfcd2,,H5,14,6,53,3,TRUE
+azara, Box-leaf azara,evergreen,Azara microphylla,"Azara are evergreen shrubs or small trees with simple leaves, often in unequal pairs, and very small, fragrant yellow flowers with prominent stamens in clusters or spikes from the leaf axils, occasionally followed by white or pale purple berries",Salicaceae,#18541e,,#f8fc81,winter,H4,18,6,50,4,FALSE
+birch, Silver birch,deciduous,Betula pendula,"Silver birch is a striking, medium-sized deciduous tree. When mature they can reach 30m in height, forming a light canopy with elegant, drooping branches. The white bark sheds layers like tissue paper and becomes black and rugged at the base. As the trees mature, the bark develops dark, diamond-shaped fissures. Twigs are smooth, and have small dark warts.",Betulaceae,#a8f763,#fcf635,#e9ff59,spring,H7,10,7,45,2,FALSE
+cherry,Ornamental cherry,deciduous,Prunus,"P. sargentii is a small, deciduous tree with a spreading or rounded crown. Ovate leaves are bronze when young, turning bright orange and red in autumn. Single rosy-pink flowers 4cm in width",Rosaceae,#278c4e,#d68c1c,#ffcffe,spring,H6,12,6,44,2,FALSE
+coprosma,Coprosma,evergreen,Coprosma repens,"Coprosma are evergreen shrubs with leathery, simple leaves and small flowers.",Rubiaceae,#a35272,,#60b818,spring,H3,18,6,50,4,FALSE
+dogwood,Dogwood,deciduous,,,Cornacae,#4bb86c,,#fffae6,summer,H5,14,6,,,FALSE
+fig,Fig,deciduous,Ficus Carica,"Figs are large shrubs or small trees grown for their succulent fruit and beautiful architectural foliage. They thrive in the garden, in a container, in glasshouses or trained against a wall.",Moraceae,#426e4f,#426e4f,,,H4,18,4,45,3,TRUE
+hawthorn,Hawthorn,deciduous,Crataegus monogyna,,Rosaceae,#538c4f,#ad954b,#fffdc2,summer,H7,10,8,50,4,FALSE
+hazel,Hazel,deciduous,Corylus avellana,hazelnut tree,Betulaceae,,,,winter,H6,12,8,45,3,TRUE
+hoheria,Hoheria,deciduous,Plagianthus lyallii,,Malvaceae,,,,summer,H4,18,4,53,3,FALSE
+holly,Holly,evergreen,,,,,,,,,,,,,FALSE
+ilex,Holm Oak,evergreen,Quercus ilex,"Holm oak is a large evergreen tree with black, finely cracked bark, developing a massive, rounded crown. Glossy dark green, ovate leaves, whitish beneath contrast with whitish young foliage and yellow catkins",Fagaceae,,,,,H6,12,8,44,2,FALSE
+koelreuteria,Kolreuteria,deciduous,Koelreuteria paniculata,"K. paniculata is an elegant small deciduous tree. Leaves pinnate, pinkish in spring, turning yellow in autumn. Small yellow flowers in conspicuous large panicles, followed by ornamental bladdery bronze fruits",Sapindaceae,#128c35,#d1d14f,#ffda82,summer,H5,14,7,44,3,FALSE
+lime,Lime,deciduous,Tilia x europaea,,Malvaceae,#8afa4d,#ebd128,#e1ff4d,spring,H7,10,9,45,3,FALSE
+magnolia,Magnolia,evergreen,Magnolia grandiflora,"A robust evergreen shrub or tree of rounded habit, with glossy dark green leaves rust-brown beneath, and relatively small creamy-white, heavily fragrant flowers, in late summer and autumn",Magnoliaceae,#376e3b,#376e3b,#fdfff0,autumn,H5,14,7,45,3,FALSE
+myrtle,Myrtle,evergreen,Myrtus Communis,"Myrtle is a bushy medium-sized evergreen shrub with small, aromatic, ovate leaves and profuse white flowers 2cm in width, followed by purplish-black berries",Myrtaceae,#2b4d2e,#2b4d2e,#ffffff,autumn,H4,16,8,50,4,FALSE
+oak,Red Oak,deciduous,Quercus rubra,"Red oak is a fast-growing large deciduous tree with an open, spreading crown and broad leaves to 22cm in length, turning red or red-brown in autumn. Flowers greenish, inconspicuous",Fagaceae,#d1904f,#d1694f,,,H7,12,12,45,3,FALSE
+plane,Plane,deciduous,Platanus x hispanica,"The London plane is a magnificent, large deciduous tree with beautiful flaking grey and cream bark. Leaves maple-like, palmately lobed, to 20cm in width. Inconspicuous flowers are followed by clustered, burr-like fruits",Platanaceae,#afe835,#d1c24f,,,H6,12,10,50,5,FALSE
+plum,Plum,deciduous,,"The plum is a small, twiggy, deciduous tree generally with arching or drooping branches. It has white blossom in early spring followed in late summer or early autumn by plum fruits with golden or greenish-yellow flesh and black, blue, purple, red or yellow skin according to cultivar",Rosaceae,,,,,H5,14,7,45,3,TRUE
+pseudopanax,Lacewood,evergreen,Pseudopanax ferox,"P. ferox is an upright, evergreen tree, later developing a small, rounded head. Green flowers are produced in summer and early autumn, followed on female plants by black berries",Araliaceae,#7da192,#7da192,#b2d63a,summer,,,,,,
+robinia,,,,,,,,,,,,,,,
+rowan,,deciduous,,,,,,,,,,,,,
+sophora,,,,,,,,,,,,,,,
+sumac,,deciduous,,,,,,,,,,,,,
+sycamore,,deciduous,,,,,,,,,,,,,
+tuliptree,,deciduous,Lirodendron tulipifera,,,,,,,,,,,,
+yew,,evergreen,,,,,,,,,,,,,

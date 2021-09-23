@@ -11,7 +11,7 @@ import climate
 dirname = os.path.dirname(__file__)
 db_file = os.path.join(dirname, 'meck.db')
 start_date = date(2021, 9, 25)
-sim_length = 3
+sim_length = 100
 speed = 1
 
 def init_db():
