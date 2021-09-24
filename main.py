@@ -57,7 +57,7 @@ def initialise():
 	print('initialising park')
 
 	# climate_proj = climate.Projection(projection_data)
-	climate_state = climate.Climate(projection_data)
+	climate_state = climate.Climate(projection_data, baseline_data)
 
 	# park.create_park()
 	plants = park.create_plants()
@@ -80,11 +80,11 @@ def run_simulation():
 	wrap_up()
 
 def main_loop():
-	global projection_data, baseline
+	global projection_data, baseline_data
 
 	sim_num = 0
 	projection_data = climate.initialise_projection_data()
-	baseline = climate.initialise_baseline()
+	baseline_data = climate.initialise_baseline()
 
 	while True:
 		print('initialising simulation', sim_num)

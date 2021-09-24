@@ -12,7 +12,8 @@ class Climate:
 	rain = 'rain'
 	water = 'water'
 
-	def __init__(self, projection_data):
+	def __init__(self, projection_data, baseline_data):
+		self.baseline = baseline_data
 		self.projection = {}
 		print('initialising')
 		# choose a random scenario
@@ -24,7 +25,6 @@ class Climate:
 
 			for year in range(int(start), int(end)):
 				self.projection[year] = {}
-				print(year)
 				# if time, perturb this according to second norm
 				for season, dist in period_list.items():
 					self.projection[year][season] = helpers.norm_from_percentiles(
@@ -50,11 +50,12 @@ class Climate:
 	def update(self, day):
 		season = self.get_cli_season(day)
 		projection = self.projection[day.year]
-		print("season is", self.get_cli_season(day))
-		print("projection is", self.projection[day.year])
-		precip = projection[season + "_precip"].rvs(size=1)
-		temp = projection[season + "_temp"].rvs(size=1)
-		print(precip, temp)
+		baseline = self.baseline[day.month-1]
+
+		precip = projection[season + "_precip"].rvs(size=1)[0]*float(baseline["precip"])*0.01 + float(baseline["precip"])
+		max_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["max_temp"])
+		min_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["min_temp"])
+		print("this week's weather", day, baseline["month"], "precipitation is", precip/4, "max temp is", max_temp, "min temp is",min_temp)
 
 
 	def print(self):
@@ -63,7 +64,7 @@ class Climate:
 def initialise_baseline():
 	with open('./assets/external_data/london_baseline.csv', 'r') as file:
 		all_ = list(csv.DictReader(file))
-		print(all_)
+		return all_
 
 def initialise_projection_data():
 	with open('./assets/external_data/london_climate.csv', 'r') as file:
