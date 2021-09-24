@@ -2,6 +2,8 @@ import os
 import json
 import csv
 import helpers
+import numpy as np
+import random
 
 dirname = os.path.dirname(__file__)
 
@@ -14,8 +16,8 @@ class Park:
 	def create_possible_events(self):
 		with open('./assets/garden_index/events.csv') as file:
 			possible_events = helpers.json_from_data(file)
-			print(possible_events)
-			return possible_events
+
+		return possible_events
 
 	def create_trees(self):
 		trees_list = []
@@ -33,28 +35,62 @@ class Park:
 
 		return trees_list
 
-	def update_month(self, climate_state):
+	def update_month(self, climate_state, month_length):
 		print('updating state of park')
-		self.events = []
+		self.month_events = []
+		weather = climate_state.print()
+		print("precip is", weather["precip"])
 
 		for event in self.possible_events:
-			print(event)
-			# self.events.append({
-			# 	'day': 3,
-			# 	'text': 'another day in the park'
-			# 	})
+			mu = float(event["baseline_freq"])
+
+			if event["type"] == "precip":
+				if event["subtype"] == "high" and weather["precip"] > float(event["threshold"]):
+					mu = float(event["baseline_freq"]) + (weather["precip"] 
+						- float(event["threshold"]))*float(event["multiplier"])
+
+				elif event["subtype"] == "low" and weather["precip"] < float(event["threshold"]):
+					mu = float(event["baseline_freq"]) + ( float(event["threshold"]) 
+						- weather["precip"])*float(event["multiplier"])
+
+			elif event["type"] == "temp":
+				if event["subtype"] == "high" and weather["max_temp"] > float(event["threshold"]):
+					print("weather and event is", weather["max_temp"], float(event["threshold"]))
+					mu = float(event["baseline_freq"]) + (weather["max_temp"] 
+						- float(event["threshold"]))*float(event["multiplier"])
+
+				elif event["subtype"] == "low" and weather["min_temp"] < float(event["threshold"]):
+					mu = float(event["baseline_freq"]) + ( float(event["threshold"]) 
+						- weather["min_temp"])*float(event["multiplier"])
+
+			num_event = np.random.poisson(mu)
+			print(event["name"], "normally happens", 
+				float(event["baseline_freq"]), "but now", num_event)
+
+			days = random.sample(range(1, month_length+1), num_event)
+
+			for inst in range(0, num_event):
+				self.month_events.append({
+					"name": event["name"],
+					"text": event["text"],
+					"effect": event["effects"],
+					"day": days[inst]
+				})
 
 		self.park_welfare(climate_state)
 
 	def park_welfare(self, climate_state):
 		for tree in self.trees:
-			print(tree.print())
+			# print(tree.print())
+			pass
 
 	def get_events(self, day):
 		event_list = []
+		# print(self.month_events)
 
-		for event in self.events:
-			if event["day"] == day.day: event_list.append(event)
+		for event in self.month_events:
+			if event["day"] == day.day: 
+				event_list.append(event)
 
 		return event_list
 

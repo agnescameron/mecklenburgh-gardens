@@ -1,5 +1,7 @@
-name,text,type,subtype,threshold,period,effects
-too hot,it’s too hot,temp,high,20,2,effect1
-too cold,it’s too cold,temp,low,10,1,effect2
-too wet,it’s too wet,precip,high,50,1,effect3
-too dry,it’s too dry,precip,low,40,1,effect4
+name,text,type,subtype,threshold,period,multiplier,baseline_freq,effects
+too hot,it’s too hot,temp,high,20,2,0.3,0,effect1
+too cold,it’s too cold,temp,low,10,1,0.3,0,effect2
+too wet,it’s too wet,precip,high,50,1,0.3,0,effect3
+too dry,it’s too dry,precip,low,40,1,0.3,0,effect4
+underground river,emptying underground river,precip,high,45,1,0.3,4,more water
+hedgehog,hello hedgehog,recurring,,,,,2,

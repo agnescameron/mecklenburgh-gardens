@@ -44,26 +44,27 @@ def wrap_up():
 def advance_month(day):
 	#calculate the season
 	global park_state, climate_state
-	# print('advancing day')
 
+	print("Month", day.month)
+	month_length = monthrange(day.year, day.month)[1]
 	#calculate the temperature, pollution, other stats
 
 	climate_state.update(day)
-	park_state.update_month(climate_state)
+	park_state.update_month(climate_state, month_length)
 	server.update_park(park_state)
 
 	# go over each day in months and put the events on them
-	for day_num in range(day.day, monthrange(day.year, day.month)[1]+1):
+	for day_num in range(day.day, month_length+1):
 		day = day + timedelta(days=1)
-		print('day is', day_num, "events", park_state.get_events(day))
+		events = park_state.get_events(day)
+		for event in events:
+			print(day, event["text"])
 		time.sleep(1/speed)
 
-	print('day is', day, 'year is', day.year)
 	return day
 
 def initialise():
 	global park_state, climate_state
-	print('initialising park')
 
 	climate_state = climate.Climate(projection_data, baseline_data)
 	park_state = park.Park()
@@ -98,7 +99,6 @@ def run_jobs(executor):
 	return app, sim
 
 if __name__ == "__main__":
-	print('starting sim')
 	# init_db()
 
 	futures = run_jobs(concurrent.futures.ThreadPoolExecutor(max_workers = 2))

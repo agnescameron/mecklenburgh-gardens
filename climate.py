@@ -38,10 +38,10 @@ class Climate:
 		projection = self.projection[day.year]
 		baseline = self.baseline[day.month-1]
 
-		precip = projection[season + "_precip"].rvs(size=1)[0]*float(baseline["precip"])*0.01 + float(baseline["precip"])
-		max_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["max_temp"])
-		min_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["min_temp"])
-		print("this week's weather", day, baseline["month"], "precipitation is", precip, "max temp is", max_temp, "min temp is",min_temp)
+		self.precip = projection[season + "_precip"].rvs(size=1)[0]*float(baseline["precip"])*0.01 + float(baseline["precip"])
+		self.max_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["max_temp"])
+		self.min_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["min_temp"])
+		print("this week's weather", day, baseline["month"], "precipitation is", self.precip, "max temp is", self.max_temp, "min temp is",self.min_temp)
 
 
 	def print(self):
