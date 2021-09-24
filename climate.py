@@ -29,20 +29,25 @@ class Water:
 
 class Projection:
 	def __init__(self, projection_data):
+		self.years = {}
 		print('initialising')
 		# choose a random scenario
-		self.scenario = random.choice(list(projection_data.items()))
+		self.scen_name, scen_list = random.choice(list(projection_data.items()))
 		# print(json.dumps(self.scenario, indent=2))
 		# print(self.scenario[0], json.dumps(self.scenario[1], indent=2))
 		# output a list of projected 
-		for period in self.scenario[1].items():
-			start, end = period[0].split('-')
-			# dist = helpers.norm_from_percentiles()
+		for period, period_list in scen_list.items():
+			start, end = period.split('-')
 
-			# for year in 
+			for year in int(start), int(end):
+				self.years[year] = {}
+				for season in period_list:
+					print(season)
+					# self.years[year][season] = helpers.norm_from_percentiles(
+					# 		float(season["10_perc"]), 0.1, float(season["90_perc"]), 0.9
+					# 	)
 
-
-			print(start, end)
+			# print(self.years)
 
 
 def initialise_projection_data():
@@ -61,16 +66,17 @@ def initialise_projection_data():
 		for year, year_group in itertools.groupby(
 				scen_details, 
 				key=lambda t: (t['time'])):
+			projections[scen_name][year] = {}
 			for period in year_group:
-				projections[scen_name][year] = {
-					period["variable"]: {
+				print(period["variable"])
+				projections[scen_name][year][period["variable"]] = {
 						"5_perc": period["5_perc"],
 						"10_perc": period["10_perc"],
 						"50_perc": period["50_perc"],
 						"90_perc": period["90_perc"],
 						"95_perc": period["95_perc"]
-					}
 				}
+
 
 	return projections
 
