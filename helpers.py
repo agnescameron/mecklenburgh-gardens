@@ -1,7 +1,8 @@
 # from scipy.stats import skewnorm
-import numpy
+import numpy as np
 import json
 import csv
+import scipy.stats as scipy
 
 def get_json(obj):
 	return json.loads(
@@ -17,3 +18,37 @@ def json_from_data(file):
 
 
 	return result
+
+def norm_from_percentiles(x1, p1, x2, p2):
+	""" Return a normal distribuion X parametrized by:
+		P(X < p1) = x1
+		P(X < p2) = x2
+	"""
+	p1ppf = scipy.norm.ppf(p1)
+	p2ppf = scipy.norm.ppf(p2)
+
+	location = ((x1 * p2ppf) - (x2 * p1ppf)) / (p2ppf - p1ppf)
+	scale = (x2 - x1) / (p2ppf - p1ppf)
+
+	return scipy.norm(loc=location, scale=scale)
+
+def lognorm_from_percentiles(x1, p1, x2, p2):
+	""" Return a log-normal distribuion X parametrized by:
+		P(X < p1) = x1
+		P(X < p2) = x2
+	"""
+	x1 = np.log(x1)
+	x2 = np.log(x2)
+	p1ppf = scipy.norm.ppf(p1)
+	p2ppf = scipy.norm.ppf(p2)
+
+	scale = (x2 - x1) / (p2ppf - p1ppf)
+	mean = ((x1 * p2ppf) - (x2 * p1ppf)) / (p2ppf - p1ppf)
+
+	return scipy.lognorm(s=scale, scale=np.exp(mean))
+
+
+def sample_norm(dist):
+
+	return numpy.random.normal(dist.loc, dist.scale)
+
