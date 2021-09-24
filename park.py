@@ -8,7 +8,7 @@ dirname = os.path.dirname(__file__)
 class Park:
 
 	def __init__(self):
-		self.plants = self.create_plants()
+		self.trees = self.create_trees()
 		self.possible_events = self.create_possible_events()
 
 	def create_possible_events(self):
@@ -17,22 +17,21 @@ class Park:
 			print(possible_events)
 			return possible_events
 
-	def create_plants(self):
-		plants = []
+	def create_trees(self):
+		trees_list = []
 		with open(r'./assets/external_data/tree_info.csv') as file:
-			plant_info = helpers.json_from_data(file)
+			tree_info = helpers.json_from_data(file)
 
 		with open('./assets/garden_index/trees.csv') as file:
 			reader = csv.reader(file)
 			for row in reader:
 				try:
-					tree_info = list(filter(lambda x:x["name"]==row[1], plant_info))[0]
-					tree = Tree(tree_info, row[0], row[2], row[3], row[4], row[5])
-					plants.append(tree)
+					tree = list(filter(lambda x:x["name"]==row[1], tree_info))[0]
+					trees_list.append(Tree(tree, row[0], row[2], row[3], row[4], row[5]))
 				except:
 					print('tree not in list')
 
-		return plants
+		return trees_list
 
 	def update_month(self, climate_state):
 		print('updating state of park')
@@ -44,6 +43,12 @@ class Park:
 			# 	'day': 3,
 			# 	'text': 'another day in the park'
 			# 	})
+
+		self.park_welfare(climate_state)
+
+	def park_welfare(self, climate_state):
+		for tree in self.trees:
+			print(tree.print())
 
 	def get_events(self, day):
 		event_list = []
@@ -106,30 +111,6 @@ class Plant:
 
 	def print(self):
 		return helpers.get_json(self)
-
-
-class Animal:
-	def __init__(self, type, id, desired_habitat):
-		#animals
-		print('animal')
-
-	def mate(self):
-		print('mating')
-
-	def die(self):
-		print('animal dying')
-
-	def print(self):
-		return helpers.get_json(self)
-
-
-class Segment:
-	def __init__(self, state):
-		print('segment')
-
-	def print(self):
-		return helpers.get_json(self)
-
 
 
 def create_segments():
