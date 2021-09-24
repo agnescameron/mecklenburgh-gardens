@@ -6,6 +6,7 @@ import csv
 from operator import itemgetter
 import random
 import json
+import scipy.stats as scipy
 
 class Climate:
 	rain = 'rain'
@@ -41,13 +42,11 @@ class Projection:
 
 			for year in int(start), int(end):
 				self.years[year] = {}
-				for season in period_list:
-					print(season)
-					# self.years[year][season] = helpers.norm_from_percentiles(
-					# 		float(season["10_perc"]), 0.1, float(season["90_perc"]), 0.9
-					# 	)
-
-			# print(self.years)
+				for season, dist in period_list.items():
+					self.years[year][season] = helpers.norm_from_percentiles(
+							float(dist["10_perc"]), 0.1, float(dist["90_perc"]), 0.9
+						)
+					# print(self.years[year][season].rvs(size=1))
 
 
 def initialise_projection_data():
