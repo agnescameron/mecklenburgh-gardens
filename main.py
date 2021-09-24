@@ -65,15 +65,8 @@ def initialise():
 	global park_state, climate_state
 	print('initialising park')
 
-	# climate_proj = climate.Projection(projection_data)
 	climate_state = climate.Climate(projection_data, baseline_data)
-
-	# park.create_park()
-	plants = park.create_plants()
-	animals = park.create_animals()
-	segments = park.create_segments()
-
-	park_state = park.Park(plants, animals, segments)
+	park_state = park.Park()
 
 
 def run_simulation():

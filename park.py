@@ -7,18 +7,43 @@ dirname = os.path.dirname(__file__)
 
 class Park:
 
-	def __init__(self, plants, animals, segments):
-		self.plants = plants
-		self.animals = animals
-		self.segments = segments
+	def __init__(self):
+		self.plants = self.create_plants()
+		self.possible_events = self.create_possible_events()
+
+	def create_possible_events(self):
+		with open('./assets/garden_index/events.csv') as file:
+			possible_events = helpers.json_from_data(file)
+			print(possible_events)
+			return possible_events
+
+	def create_plants(self):
+		plants = []
+		with open(r'./assets/external_data/tree_info.csv') as file:
+			plant_info = helpers.json_from_data(file)
+
+		with open('./assets/garden_index/trees.csv') as file:
+			reader = csv.reader(file)
+			for row in reader:
+				try:
+					tree_info = list(filter(lambda x:x["name"]==row[1], plant_info))[0]
+					tree = Tree(tree_info, row[0], row[2], row[3], row[4], row[5])
+					plants.append(tree)
+				except:
+					print('tree not in list')
+
+		return plants
 
 	def update_month(self, climate_state):
 		print('updating state of park')
 		self.events = []
-		self.events.append({
-			'day': 3,
-			'text': 'another day in the park'
-			})
+
+		for event in self.possible_events:
+			print(event)
+			# self.events.append({
+			# 	'day': 3,
+			# 	'text': 'another day in the park'
+			# 	})
 
 	def get_events(self, day):
 		event_list = []
@@ -27,6 +52,7 @@ class Park:
 			if event["day"] == day.day: event_list.append(event)
 
 		return event_list
+
 
 	def get_season(self, day):
 		if day.month in [9, 10, 11]:
@@ -104,29 +130,6 @@ class Segment:
 	def print(self):
 		return helpers.get_json(self)
 
-
-def create_plants():
-	plants = []
-	with open(r'./assets/external_data/tree_info.csv', encoding='utf-8') as file:
-		plant_info = helpers.json_from_data(file)
-
-	with open('./assets/garden_index/trees.csv') as file:
-		reader = csv.reader(file)
-		for row in reader:
-			try:
-				tree_info = list(filter(lambda x:x["name"]==row[1], plant_info))[0]
-				tree = Tree(tree_info, row[0], row[2], row[3], row[4], row[5])
-				plants.append(tree)
-			except:
-				print('tree not in list')
-
-	return plants
-
-
-def create_animals():
-	# animal generation
-	animals = ['animal']
-	return animals
 
 
 def create_segments():
