@@ -12,42 +12,58 @@ class Climate:
 	rain = 'rain'
 	water = 'water'
 
-	def __init__(self, emissions_scenario):
-		self.emissions = emissions_scenario
-
-	def update(self, day):
-		# print('updating climate', day)
-		pass
-
-# river fleet?
-class Water:
-	print('water')
-
-# # world always loads same state from climate
-# # info files
-# def initialise():
-# 	print('initialising climate')
-
-class Projection:
 	def __init__(self, projection_data):
-		self.years = {}
+		self.projection = {}
 		print('initialising')
 		# choose a random scenario
 		self.scen_name, scen_list = random.choice(list(projection_data.items()))
-		# print(json.dumps(self.scenario, indent=2))
-		# print(self.scenario[0], json.dumps(self.scenario[1], indent=2))
-		# output a list of projected 
+
+		# output a list of projected distributions
 		for period, period_list in scen_list.items():
 			start, end = period.split('-')
 
-			for year in int(start), int(end):
-				self.years[year] = {}
+			for year in range(int(start), int(end)):
+				self.projection[year] = {}
+				print(year)
+				# if time, perturb this according to second norm
 				for season, dist in period_list.items():
-					self.years[year][season] = helpers.norm_from_percentiles(
+					self.projection[year][season] = helpers.norm_from_percentiles(
 							float(dist["10_perc"]), 0.1, float(dist["90_perc"]), 0.9
 						)
-					# print(self.years[year][season].rvs(size=1))
 
+	def get_season(self, day):
+		if day.month in [9, 10, 11]:
+			return 'autumn'
+		elif day.month in [12, 1, 2]:
+			return 'winter'
+		elif day.month in [3, 4, 5]:
+			return 'spring'
+		else:
+			return 'summer'
+
+	def get_cli_season(self, day):
+		if day.month in [10, 11, 12, 1, 2, 3]:
+			return 'winter'
+		else:
+			return 'summer'
+
+	def update(self, day):
+		season = self.get_cli_season(day)
+		projection = self.projection[day.year]
+		print("season is", self.get_cli_season(day))
+		print("projection is", self.projection[day.year])
+		precip = projection[season + "_precip"].rvs(size=1)
+		temp = projection[season + "_temp"].rvs(size=1)
+		print(precip, temp)
+
+
+	def print(self):
+		return helpers.get_json(self)
+
+def initialise_baseline():
+	with open('./assets/external_data/london_baseline.csv', 'r') as file:
+		all_ = list(csv.DictReader(file))
+		print(all_)
 
 def initialise_projection_data():
 	with open('./assets/external_data/london_climate.csv', 'r') as file:
@@ -67,7 +83,6 @@ def initialise_projection_data():
 				key=lambda t: (t['time'])):
 			projections[scen_name][year] = {}
 			for period in year_group:
-				print(period["variable"])
 				projections[scen_name][year][period["variable"]] = {
 						"5_perc": period["5_perc"],
 						"10_perc": period["10_perc"],

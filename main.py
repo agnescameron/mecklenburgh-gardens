@@ -56,7 +56,8 @@ def initialise():
 	global park_state, climate_state
 	print('initialising park')
 
-	climate_proj = climate.Projection(projection_data)
+	# climate_proj = climate.Projection(projection_data)
+	climate_state = climate.Climate(projection_data)
 
 	# park.create_park()
 	plants = park.create_plants()
@@ -64,7 +65,6 @@ def initialise():
 	segments = park.create_segments()
 
 	park_state = park.Park(plants, animals, segments)
-	climate_state = climate.Climate('heavy')
 
 
 def run_simulation():
@@ -80,10 +80,11 @@ def run_simulation():
 	wrap_up()
 
 def main_loop():
-	global projection_data
+	global projection_data, baseline
 
 	sim_num = 0
 	projection_data = climate.initialise_projection_data()
+	baseline = climate.initialise_baseline()
 
 	while True:
 		print('initialising simulation', sim_num)
