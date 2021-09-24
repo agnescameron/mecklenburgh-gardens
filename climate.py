@@ -9,9 +9,6 @@ import json
 import scipy.stats as scipy
 
 class Climate:
-	rain = 'rain'
-	water = 'water'
-
 	def __init__(self, projection_data, baseline_data):
 		self.baseline = baseline_data
 		self.projection = {}
