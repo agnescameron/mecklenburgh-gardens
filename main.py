@@ -3,6 +3,8 @@ import os
 import concurrent.futures
 import json
 from datetime import date, timedelta
+# from dateutil.relativedelta import relativedelta
+from calendar import monthrange
 
 # submodules
 import server
@@ -12,8 +14,8 @@ import climate
 dirname = os.path.dirname(__file__)
 db_file = os.path.join(dirname, 'meck.db')
 start_date = date(2021, 9, 25)
-sim_length = 100
-speed = 1
+# sim_length = 99
+speed = 10
 
 def init_db():
 	global db_file
@@ -39,16 +41,23 @@ def wrap_up():
 	print('recording results')
 	# record_results()
 
-def advance_day(day):
+def advance_month(day):
 	#calculate the season
 	global park_state, climate_state
 	# print('advancing day')
 
 	#calculate the temperature, pollution, other stats
-	day = day + timedelta(days=7)
+
 	climate_state.update(day)
-	park_state.update(day, climate_state)
+	park_state.update_month(climate_state)
 	server.update_park(park_state)
+
+	# go over each day in months and put the events on them
+	for day_num in range(day.day, monthrange(day.year, day.month)[1]+1):
+		day = day + timedelta(days=1)
+		print('day is', day_num, "events", park_state.get_events(day))
+		time.sleep(1/speed)
+
 	print('day is', day, 'year is', day.year)
 	return day
 
@@ -72,10 +81,9 @@ def run_simulation():
 	year = day.year
 	initialise()
 
-	while year < start_date.year + sim_length:
-		day = advance_day(day)
+	while year < 2099:
+		day = advance_month(day)
 		year = day.year
-		time.sleep(1/speed)
 
 	wrap_up()
 
@@ -90,7 +98,6 @@ def main_loop():
 		print('initialising simulation', sim_num)
 		run_simulation()
 		sim_num +=1
-	# keep running 100-year cycles
 
 def run_jobs(executor):
 	app = executor.submit(server.run)

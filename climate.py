@@ -28,18 +28,7 @@ class Climate:
 				# if time, perturb this according to second norm
 				for season, dist in period_list.items():
 					self.projection[year][season] = helpers.norm_from_percentiles(
-							float(dist["10_perc"]), 0.1, float(dist["90_perc"]), 0.9
-						)
-
-	def get_season(self, day):
-		if day.month in [9, 10, 11]:
-			return 'autumn'
-		elif day.month in [12, 1, 2]:
-			return 'winter'
-		elif day.month in [3, 4, 5]:
-			return 'spring'
-		else:
-			return 'summer'
+							float(dist["10_perc"]), 0.1, float(dist["90_perc"]), 0.9)
 
 	def get_cli_season(self, day):
 		if day.month in [10, 11, 12, 1, 2, 3]:
@@ -55,7 +44,7 @@ class Climate:
 		precip = projection[season + "_precip"].rvs(size=1)[0]*float(baseline["precip"])*0.01 + float(baseline["precip"])
 		max_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["max_temp"])
 		min_temp = projection[season + "_temp"].rvs(size=1)[0] + float(baseline["min_temp"])
-		print("this week's weather", day, baseline["month"], "precipitation is", precip/4, "max temp is", max_temp, "min temp is",min_temp)
+		print("this week's weather", day, baseline["month"], "precipitation is", precip, "max temp is", max_temp, "min temp is",min_temp)
 
 
 	def print(self):

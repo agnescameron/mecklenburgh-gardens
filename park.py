@@ -6,19 +6,37 @@ import helpers
 dirname = os.path.dirname(__file__)
 
 class Park:
-	events = []
 
 	def __init__(self, plants, animals, segments):
 		self.plants = plants
 		self.animals = animals
 		self.segments = segments
 
-	def update(self, day, climate_state):
+	def update_month(self, climate_state):
 		print('updating state of park')
-		self.events.append('another day in the park')
-		for plant in self.plants:
-			pass
-			# print(plant.full_name)
+		self.events = []
+		self.events.append({
+			'day': 3,
+			'text': 'another day in the park'
+			})
+
+	def get_events(self, day):
+		event_list = []
+
+		for event in self.events:
+			if event["day"] == day.day: event_list.append(event)
+
+		return event_list
+
+	def get_season(self, day):
+		if day.month in [9, 10, 11]:
+			return 'autumn'
+		elif day.month in [12, 1, 2]:
+			return 'winter'
+		elif day.month in [3, 4, 5]:
+			return 'spring'
+		else:
+			return 'summer'
 
 	def outbreak(self):
 		print('adding plant')
