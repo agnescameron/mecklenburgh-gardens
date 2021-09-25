@@ -1,8 +1,13 @@
 name,text,type,subtype,threshold,period,multiplier,baseline_freq,effects
-too hot,a brief heatwave causes leaves on the almond to curl,temp,high,25,2,0.3,0,effect1
-too cold,sustained cold temperatures put the coprosma under stress,temp,low,-2,1,0.3,0,effect2
-too wet,rainstorms give way to water logging,precip,high,50,1,0.3,0,effect3
-too dry,the garden is suffering from drought due to a lack of rain,precip,low,40,1,0.3,0,effect4
-underground river,site staff from Goodenough college come to drain the underground river,precip,high,45,1,0.2,1,more water
-hedgehog,a hedgehog is sighted in the Patterson border,recurring,,,,,1,
-aphids,some aphids take up residence on the courgette plant,recurring,,,,,0,
+too hot,A brief heatwave has caused the leaves on the almond to curl,temp,high,25,2,0.3,0,effect1
+too cold,Sustained cold temperatures have put the coprosma under stress.,temp,low,-2,1,0.3,0,effect2
+too wet,Rainstorms have given way to water logging.,precip,high,50,1,0.3,0,effect3
+too dry,The garden is suffering from drought due to a lack of rain.,precip,low,40,1,0.3,0,effect4
+underground river,"Today, site staff from Goodenough college will come to drain the underground river.",precip,high,45,1,0.2,1,more water
+hedgehog,A hedgehog has been sighted in the Patterson border,recurring,,,,,0.1,
+aphids,Some aphids have take up residence on the courgette plant.,recurring,,,,,0.1,
+weather1,Winds low to moderate.,recurring,,,,,0.1,
+weather2,"Wind speeds will peak toward the middle of the month, due to a drop in pressure from the east.",recurring,,,,,0.1,
+weather3,Skies expected to clear soon.,recurring,,,,,0.1,
+too wet 2,An intense storm is projected to hit this evening.,precip,high,55,1,0.3,0,effect3
+too hot,"The heatwave has entered its second week, and the garden is sweltering.",temp,high,30,2,0.3,0,effect1

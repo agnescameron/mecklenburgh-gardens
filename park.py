@@ -14,6 +14,10 @@ class Park:
 		self.possible_events = self.create_possible_events()
 		self.day = day
 		self.day_events = []
+		self.max_temp = 22
+		self.min_temp = 11
+		self.precip = 45
+
 
 	def create_possible_events(self):
 		with open(os.path.join(dirname, './assets/garden_index/events.csv')) as file:
@@ -41,7 +45,9 @@ class Park:
 		print('updating state of park')
 		self.month_events = []
 		weather = climate_state.print()
-		print("precip is", weather["precip"])
+		self.max_temp = weather["max_temp"]
+		self.min_temp = weather["min_temp"]
+		self.precip = weather["precip"]
 
 		for event in self.possible_events:
 			mu = float(event["baseline_freq"])
