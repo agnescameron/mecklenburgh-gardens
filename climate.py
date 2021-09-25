@@ -8,6 +8,8 @@ import random
 import json
 import scipy.stats as scipy
 
+dirname = os.path.dirname(__file__)
+
 class Climate:
 	def __init__(self, projection_data, baseline_data):
 		self.baseline = baseline_data
@@ -48,12 +50,12 @@ class Climate:
 		return helpers.get_json(self)
 
 def initialise_baseline():
-	with open('./assets/external_data/london_baseline.csv', 'r') as file:
+	with open(os.path.join(dirname,'./assets/external_data/london_baseline.csv')) as file:
 		all_ = list(csv.DictReader(file))
 		return all_
 
 def initialise_projection_data():
-	with open('./assets/external_data/london_climate.csv', 'r') as file:
+	with open(os.path.join(dirname,'./assets/external_data/london_climate.csv')) as file:
 		all_ = list(csv.DictReader(file))
 
 	scen_groups = {}

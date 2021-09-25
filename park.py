@@ -16,17 +16,17 @@ class Park:
 		self.day_events = []
 
 	def create_possible_events(self):
-		with open('./assets/garden_index/events.csv') as file:
+		with open(os.path.join(dirname, './assets/garden_index/events.csv')) as file:
 			possible_events = helpers.json_from_data(file)
 
 		return possible_events
 
 	def create_trees(self):
 		trees_list = []
-		with open(r'./assets/external_data/tree_info.csv') as file:
+		with open(os.path.join(dirname, './assets/external_data/tree_info.csv')) as file:
 			tree_info = helpers.json_from_data(file)
 
-		with open('./assets/garden_index/trees.csv') as file:
+		with open(os.path.join(dirname,'./assets/garden_index/trees.csv')) as file:
 			reader = csv.reader(file)
 			for row in reader:
 				try:
