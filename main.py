@@ -15,7 +15,7 @@ dirname = os.path.dirname(__file__)
 db_file = os.path.join(dirname, 'meck.db')
 start_date = date(2021, 9, 25)
 # sim_length = 99
-speed = 10
+speed = 1
 
 def init_db():
 	global db_file
@@ -51,7 +51,6 @@ def advance_month(day):
 
 	climate_state.update(day)
 	park_state.update_month(climate_state, month_length)
-	server.update_park(park_state)
 
 	# go over each day in months and put the events on them
 	for day_num in range(day.day, month_length+1):
@@ -59,6 +58,7 @@ def advance_month(day):
 		events = park_state.get_events(day)
 		for event in events:
 			print(day, event["text"])
+		server.update_park(park_state)
 		time.sleep(1/speed)
 
 	return day
@@ -67,7 +67,7 @@ def initialise():
 	global park_state, climate_state
 
 	climate_state = climate.Climate(projection_data, baseline_data)
-	park_state = park.Park()
+	park_state = park.Park(start_date)
 
 
 def run_simulation():

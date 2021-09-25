@@ -9,9 +9,11 @@ dirname = os.path.dirname(__file__)
 
 class Park:
 
-	def __init__(self):
+	def __init__(self, day):
 		self.trees = self.create_trees()
 		self.possible_events = self.create_possible_events()
+		self.day = day
+		self.day_events = []
 
 	def create_possible_events(self):
 		with open('./assets/garden_index/events.csv') as file:
@@ -81,18 +83,19 @@ class Park:
 
 	def park_welfare(self, climate_state):
 		for tree in self.trees:
-			# print(tree.print())
+			# check against climate
+			# append tree welfare to events (at random, apart from death)
 			pass
 
 	def get_events(self, day):
-		event_list = []
-		# print(self.month_events)
+		self.day = day
+		self.day_events = []
 
 		for event in self.month_events:
 			if event["day"] == day.day: 
-				event_list.append(event)
+				self.day_events.append(event)
 
-		return event_list
+		return self.day_events
 
 
 	def get_season(self, day):
@@ -149,6 +152,3 @@ class Plant:
 		return helpers.get_json(self)
 
 
-def create_segments():
-	segments = ['seg', 'seg']
-	return segments
