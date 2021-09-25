@@ -33,7 +33,7 @@ class Park:
 					tree = list(filter(lambda x:x["name"]==row[1], tree_info))[0]
 					trees_list.append(Tree(tree, row[0], row[2], row[3], row[4], row[5]))
 				except:
-					print('tree not in list')
+					print(row[1], 'tree not in list')
 
 		return trees_list
 
