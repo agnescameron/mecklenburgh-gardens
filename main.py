@@ -15,7 +15,7 @@ dirname = os.path.dirname(__file__)
 db_file = os.path.join(dirname, 'meck.db')
 start_date = date(2021, 9, 25)
 # sim_length = 99
-speed = 1
+speed = 0.4
 
 def init_db():
 	global db_file
