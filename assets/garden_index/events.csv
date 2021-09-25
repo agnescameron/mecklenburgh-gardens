@@ -9,5 +9,6 @@ aphids,Some aphids have take up residence on the courgette plant.,recurring,,,,,
 weather1,Winds low to moderate.,recurring,,,,,0.1,
 weather2,"Wind speeds will peak toward the middle of the month, due to a drop in pressure from the east.",recurring,,,,,0.1,
 weather3,Skies expected to clear soon.,recurring,,,,,0.1,
-too wet 2,An intense storm is projected to hit this evening.,precip,high,55,1,0.3,0,effect3
+too wet 2,An intense storm is projected to hit this evening.,precip,high,55,1,0.3,0.1,effect3
 too hot,"The heatwave has entered its second week, and the garden is sweltering.",temp,high,30,2,0.3,0,effect1
+too hot,"As midday temperatures top 25 degrees, the geraniums have begun to wilt.",temp,high,23,2,0.2,0,effect1

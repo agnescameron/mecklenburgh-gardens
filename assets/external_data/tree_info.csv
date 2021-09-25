@@ -21,10 +21,10 @@ oak,Red Oak,deciduous,Quercus rubra,"Red oak is a fast-growing large deciduous t
 plane,Plane,deciduous,Platanus x hispanica,"The London plane is a magnificent, large deciduous tree with beautiful flaking grey and cream bark. Leaves maple-like, palmately lobed, to 20cm in width. Inconspicuous flowers are followed by clustered, burr-like fruits",Platanaceae,#64b32d,#d1c24f,,,H6,12,10,50,5,FALSE
 plum,Plum,deciduous,,"The plum is a small, twiggy, deciduous tree generally with arching or drooping branches. It has white blossom in early spring followed in late summer or early autumn by plum fruits with golden or greenish-yellow flesh and black, blue, purple, red or yellow skin according to cultivar",Rosaceae,#4bb019,#b87f0f,#f4fcc5,spring,H5,14,7,45,3,TRUE
 pseudopanax,Lacewood,evergreen,Pseudopanax ferox,"P. ferox is an upright, evergreen tree, later developing a small, rounded head. Green flowers are produced in summer and early autumn, followed on female plants by black berries",Araliaceae,#7da192,#7da192,#b2d63a,summer,H4,16,8,50,3,FALSE
-robinia,Black Locust,deciduous,,blank,latinname,#4cd147,,,,H7,12,12,45,4,FALSE
-rowan,Rowan,deciduous,,blank,latinname,#8ad64f,,,,H6,12,10,50,3,FALSE
-sophora,Sophora,deciduous,,blank,latinname,#066327,,,,H5,14,7,45,5,FALSE
-sumac,,deciduous,,blank,latinname,#6fab00,#d66400,#a10d41,autumn,H4,16,8,50,3,FALSE
-sycamore,,deciduous,,blank,latinname,#37bf2a,#e0b000,,,H7,12,12,45,4,FALSE
-tuliptree,,deciduous,Lirodendron tulipifera,blank,latinname,#21a652,#e8a710,#fff23d,summer,H6,12,10,50,6,FALSE
-yew,,evergreen,,blank,latinname,#17522c,,,,H5,14,7,45,5,FALSE
+robinia,Black Locust,deciduous,Robinia Pseudoacacia,"Robinia are vigorous suckering trees and shrubs, sometimes thorny, with pinnate leaves and racemes of pea-type flowers in early summer, sometimes followed by seed pods",family,#c8f542,,,,H7,12,12,45,4,FALSE
+rowan,Rowan,deciduous,,blank,family,#8ad64f,,,,H6,12,10,50,3,FALSE
+sophora,Sophora,deciduous,,blank,family,#066327,,,,H5,14,7,45,5,FALSE
+sumac,Sumac,deciduous,,blank,family,#6fab00,#d66400,#a10d41,autumn,H4,16,8,50,3,FALSE
+sycamore,Sycamore,deciduous,,blank,family,#37bf2a,#e0b000,,,H7,12,12,45,4,FALSE
+tuliptree,Tulip Tree,deciduous,Lirodendron tulipifera,blank,family,#21a652,#e8a710,#fff23d,summer,H6,12,10,50,6,FALSE
+yew,Yew,evergreen,,blank,family,#17522c,,,,H5,14,7,45,5,FALSE
